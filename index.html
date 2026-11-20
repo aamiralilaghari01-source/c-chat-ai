@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C Chat AI</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Arial,sans-serif;
+ background:#101827;color:white;height:100vh;
+ display:flex;flex-direction:column
+}
+header{
+ padding:18px;background:#172235;
+ display:flex;align-items:center;gap:12px;
+ border-bottom:1px solid #29364a
+}
+.logo{
+ width:42px;height:42px;border-radius:14px;
+ background:linear-gradient(135deg,#00c6ff,#0072ff);
+ display:grid;place-items:center;font-size:22px
+}
+header h2{margin:0;font-size:20px}
+header small{color:#8ea4c5}
+main{
+ flex:1;overflow:auto;padding:18px;
+ display:flex;flex-direction:column;gap:18px
+}
+.msg{padding:14px 16px;border-radius:18px;
+ max-width:90%;line-height:1.5;white-space:pre-wrap}
+.ai{background:#1d2a3d;align-self:flex-start}
+.user{background:#087cff;align-self:flex-end}
+.welcome{text-align:center;margin:auto;color:#b8c5d8}
+.welcome h1{color:white;font-size:27px}
+footer{padding:12px;background:#172235}
+form{display:flex;gap:8px}
+input{
+ flex:1;padding:15px;border-radius:25px;
+ border:1px solid #34445d;background:#101827;
+ color:white;font-size:16px;outline:none
+}
+button{
+ border:0;background:#087cff;color:white;
+ width:50px;border-radius:50%;font-size:22px
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🤖</div>
+<div>
+<h2>C Chat AI</h2>
+<small>AI Assistant · Online</small>
+</div>
+</header>
+
+<main id="chat">
+<div class="welcome">
+<h1>Welcome to C Chat AI</h1>
+<p>How can I help you today?</p>
+</div>
+<div class="msg ai">
+Assalam-o-Alaikum! 👋
+I am C Chat AI. Ask me anything!
+</div>
+</main>
+
+<footer>
+<form id="form">
+<input id="input" placeholder="Message C Chat AI..." autocomplete="off">
+<button type="submit">➤</button>
+</form>
+</footer>
+
+<script>
+const form=document.getElementById("form");
+const input=document.getElementById("input");
+const chat=document.getElementById("chat");
+
+form.addEventListener("submit",function(e){
+ e.preventDefault();
+ const text=input.value.trim();
+ if(!text)return;
+
+ const user=document.createElement("div");
+ user.className="msg user";
+ user.textContent=text;
+ chat.appendChild(user);
+
+ const reply=document.createElement("div");
+ reply.className="msg ai";
+ reply.textContent="Your message has been received! 🤖 The AI connection will be added in the next step.";
+ chat.appendChild(reply);
+
+ input.value="";
+ chat.scrollTop=chat.scrollHeight;
+});
+</script>
+</body>
+</html>
